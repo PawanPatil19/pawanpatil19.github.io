@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pawan Patil — Software Engineer</title>
+    <title>Pawan Patil</title>
 
     <!-- Coding font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,29 +15,23 @@
 
     <style>
       :root {
-        --bg: #0b0d10;
-        --panel: rgba(255, 255, 255, 0.04);
-        --text: rgba(255, 255, 255, 0.88);
-        --muted: rgba(255, 255, 255, 0.62);
-        --line: rgba(255, 255, 255, 0.12);
-        --accent: rgba(120, 180, 255, 0.9);
+        --bg: #f5efe6;
+        --panel: #fffaf2;
+        --text: #1f1f1f;
+        --muted: #5a5a5a;
+        --line: #e5dccf;
+        --accent: #7a5cff;
       }
 
       * { box-sizing: border-box; }
       html, body { height: 100%; }
-
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
-        background: radial-gradient(900px 500px at 15% 10%, rgba(120, 180, 255, 0.14), transparent 55%),
-                    radial-gradient(800px 500px at 85% 35%, rgba(160, 255, 210, 0.08), transparent 60%),
-                    var(--bg);
+        background: var(--bg);
         color: var(--text);
-        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-          "Courier New", monospace;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
         letter-spacing: -0.01em;
         line-height: 1.55;
       }
@@ -51,7 +45,6 @@
         padding: 72px 20px 40px;
       }
 
-      /* ---------- Header / Nav (no wrap) ---------- */
       header {
         display: flex;
         align-items: center;
@@ -61,9 +54,7 @@
         border-bottom: 1px solid var(--line);
       }
 
-      .brand {
-        min-width: 220px;
-      }
+      .brand { min-width: 220px; }
 
       .name {
         font-size: 22px;
@@ -81,14 +72,12 @@
         display: flex;
         gap: 10px;
         align-items: center;
-        flex-wrap: nowrap;              /* key: do not wrap */
-        white-space: nowrap;            /* key: keep items on one line */
-        overflow-x: auto;               /* key: if too small, allow horizontal scroll */
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 4px;            /* space so scrollbar doesn't overlap */
-        scrollbar-width: none;          /* Firefox hide scrollbar */
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
       }
-      nav::-webkit-scrollbar { display: none; } /* Chrome/Safari hide scrollbar */
+      nav::-webkit-scrollbar { display: none; }
 
       .navlink {
         font-size: 13px;
@@ -96,37 +85,34 @@
         padding: 8px 10px;
         border-radius: 999px;
         border: 1px solid transparent;
-        transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
+        transition: all 180ms ease;
       }
       .navlink:hover {
-        color: rgba(255,255,255,0.92);
+        color: var(--text);
         border-color: var(--line);
-        background: rgba(0,0,0,0.16);
+        background: #f0e6d8;
         transform: translateY(-1px);
       }
       .navlink.active {
-        color: rgba(255,255,255,0.92);
+        color: var(--text);
         border-color: var(--line);
-        background: rgba(0,0,0,0.22);
+        background: #f0e6d8;
       }
 
-      /* Stack on small screens but still one-line nav */
       @media (max-width: 760px) {
         header { flex-direction: column; align-items: flex-start; }
         .brand { min-width: 0; }
         nav { width: 100%; }
       }
 
-      /* ---------- Sections / Cards ---------- */
       .section {
         margin-top: 34px;
         padding: 18px 18px;
         background: var(--panel);
         border: 1px solid var(--line);
         border-radius: 14px;
-        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.04);
 
-        /* reveal animation baseline */
         opacity: 0;
         transform: translateY(14px);
         transition: opacity 500ms ease, transform 500ms ease;
@@ -140,7 +126,6 @@
         margin: 0 0 10px;
         font-size: 14px;
         font-weight: 600;
-        color: rgba(255, 255, 255, 0.84);
       }
 
       .mono-pill {
@@ -152,13 +137,12 @@
         padding: 8px 10px;
         font-size: 12px;
         color: var(--muted);
-        background: rgba(0, 0, 0, 0.18);
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        background: #f7f1e7;
+        transition: all 180ms ease;
       }
       .mono-pill:hover {
         transform: translateY(-1px);
-        border-color: rgba(255,255,255,0.18);
-        background: rgba(0,0,0,0.24);
+        background: #efe6d6;
       }
 
       .grid {
@@ -182,20 +166,17 @@
         padding: 12px 12px;
         border: 1px solid var(--line);
         border-radius: 12px;
-        background: rgba(0, 0, 0, 0.12);
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        background: #fdf8f0;
+        transition: all 180ms ease;
       }
       .item:hover {
         transform: translateY(-2px);
-        border-color: rgba(255,255,255,0.18);
-        background: rgba(0,0,0,0.18);
+        background: #f4eadb;
       }
 
       .item .top {
         display: flex;
-        align-items: baseline;
         justify-content: space-between;
-        gap: 12px;
         margin-bottom: 6px;
       }
 
@@ -207,13 +188,6 @@
       .item .meta {
         color: var(--muted);
         font-size: 12px;
-        white-space: nowrap;
-      }
-
-      .item p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 13px;
       }
 
       footer {
@@ -222,40 +196,21 @@
         font-size: 12px;
         display: flex;
         justify-content: space-between;
-        gap: 12px;
         flex-wrap: wrap;
         padding-top: 14px;
         border-top: 1px solid var(--line);
       }
 
-      /* ---------- subtle “cursor” vibe + intro animation ---------- */
+      /* subtle cursor */
       .cursor::after {
         content: "▍";
         margin-left: 6px;
-        color: rgba(255, 255, 255, 0.45);
+        color: #999;
         animation: blink 1.1s infinite;
       }
       @keyframes blink {
         0%, 45% { opacity: 1; }
         46%, 100% { opacity: 0; }
-      }
-
-      .fade-in {
-        animation: fadeInUp 650ms ease both;
-      }
-      .fade-in.delay-1 { animation-delay: 80ms; }
-      .fade-in.delay-2 { animation-delay: 160ms; }
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(10px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      /* Respect reduced motion */
-      @media (prefers-reduced-motion: reduce) {
-        html { scroll-behavior: auto; }
-        .fade-in { animation: none; }
-        .section { opacity: 1; transform: none; transition: none; }
-        .item, .mono-pill, .navlink { transition: none; }
       }
     </style>
   </head>
@@ -264,11 +219,11 @@
     <div class="wrap">
       <header>
         <div class="brand">
-          <h1 class="name cursor fade-in">Pawan Patil</h1>
-          <p class="tagline fade-in delay-1">Software Engineer • Backend / Infrastructure • Building reliable systems</p>
+          <h1 class="name cursor">Pawan Patil</h1>
+          <p class="tagline">Software Engineer • Backend / Infrastructure • Building reliable systems</p>
         </div>
 
-        <nav aria-label="Primary">
+        <nav>
           <a class="navlink" href="#about">/about</a>
           <a class="navlink" href="#projects">/projects</a>
           <a class="navlink" href="#experience">/experience</a>
@@ -278,40 +233,10 @@
 
       <section id="about" class="section">
         <h2>About</h2>
-        <div class="grid">
-          <div>
-            <p style="margin: 0; color: var(--muted); font-size: 13px;">
-              I build backend systems and data infrastructure with a focus on correctness, performance, and clean developer
-              experience. I enjoy shipping practical tools, tightening pipelines, and making systems easier to operate.
-            </p>
-
-            <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
-              <span class="mono-pill">Python • FastAPI</span>
-              <span class="mono-pill">Kubernetes • Helm</span>
-              <span class="mono-pill">ClickHouse • Data Pipelines</span>
-              <span class="mono-pill">Distributed Systems</span>
-            </div>
-          </div>
-
-          <div>
-            <ul class="list">
-              <li class="item">
-                <div class="top">
-                  <span class="title">Currently</span>
-                  <span class="meta">Singapore / India</span>
-                </div>
-                <p>Software engineering, infra + data platforms.</p>
-              </li>
-              <li class="item">
-                <div class="top">
-                  <span class="title">Focus</span>
-                  <span class="meta">2026</span>
-                </div>
-                <p>Observability, scalable ingestion, reliable deployments.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <p style="margin: 0; color: var(--muted); font-size: 13px;">
+          I build backend systems and data infrastructure with a focus on correctness, performance, and clean developer
+          experience. I enjoy shipping practical tools, tightening pipelines, and making systems easier to operate.
+        </p>
       </section>
 
       <section id="projects" class="section">
@@ -322,23 +247,7 @@
               <span class="title">Real-time Ingestion Worker</span>
               <span class="meta">RabbitMQ → ClickHouse</span>
             </div>
-            <p>Designed ingestion + rollups, schema migrations, and operational guardrails for high-volume metrics.</p>
-          </li>
-
-          <li class="item">
-            <div class="top">
-              <span class="title">Simulation Scenario Service</span>
-              <span class="meta">FastAPI</span>
-            </div>
-            <p>Built APIs to manage simulation scenarios and testing workflows; focused on clean interfaces and correctness.</p>
-          </li>
-
-          <li class="item">
-            <div class="top">
-              <span class="title">Infrastructure Tooling</span>
-              <span class="meta">K8s / Helm</span>
-            </div>
-            <p>Deployment templates and automation to make services repeatable, observable, and safe to change.</p>
+            <p>High-volume ingestion with rollups and schema migrations.</p>
           </li>
         </ul>
       </section>
@@ -348,18 +257,10 @@
         <ul class="list">
           <li class="item">
             <div class="top">
-              <span class="title">Software Engineer (Intern)</span>
-              <span class="meta">Autonomy / Data Platforms</span>
+              <span class="title">Software Engineer Intern</span>
+              <span class="meta">Autonomy / Data</span>
             </div>
-            <p>Worked on backend + data systems for autonomous vehicle operations (testing, ingestion, and platform reliability).</p>
-          </li>
-
-          <li class="item">
-            <div class="top">
-              <span class="title">Student Assistant</span>
-              <span class="meta">AI & Robotics Lab</span>
-            </div>
-            <p>Built and tested components for robotics applications; collaborated closely with research and engineering teams.</p>
+            <p>Backend and data platform development for autonomous vehicle systems.</p>
           </li>
         </ul>
       </section>
@@ -367,29 +268,21 @@
       <section id="contact" class="section">
         <h2>Contact</h2>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <a class="mono-pill" href="mailto:you@example.com">email: you@example.com</a>
-          <a class="mono-pill" href="https://github.com/yourhandle" target="_blank" rel="noreferrer">github: /yourhandle</a>
-          <a class="mono-pill" href="https://www.linkedin.com/in/yourhandle" target="_blank" rel="noreferrer"
-            >linkedin: /yourhandle</a
-          >
-          <a class="mono-pill" href="/resume.pdf">resume.pdf</a>
+          <a class="mono-pill" href="mailto:you@example.com">email</a>
+          <a class="mono-pill" href="#">github</a>
+          <a class="mono-pill" href="#">linkedin</a>
         </div>
-        <p style="margin: 12px 0 0; color: var(--muted); font-size: 12px;">
-          Replace placeholders (email/github/linkedin) and optionally link a real <code>resume.pdf</code>.
-        </p>
       </section>
 
-      <footer class="fade-in delay-2">
+      <footer>
         <span>© <span id="year"></span> Pawan Patil</span>
-        <span style="color: rgba(255,255,255,0.45);">minimal • fast • readable</span>
+        <span></span>
       </footer>
     </div>
 
     <script>
-      // Year
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Reveal-on-scroll (IntersectionObserver)
       const sections = document.querySelectorAll(".section");
       const io = new IntersectionObserver(
         (entries) => {
@@ -400,32 +293,6 @@
         { threshold: 0.12 }
       );
       sections.forEach((s) => io.observe(s));
-
-      // Active nav link while scrolling
-      const navLinks = Array.from(document.querySelectorAll(".navlink"));
-      const sectionById = new Map(Array.from(sections).map((s) => [s.id, s]));
-
-      const setActive = (id) => {
-        navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
-      };
-
-      const ioActive = new IntersectionObserver(
-        (entries) => {
-          // pick the most visible intersecting section
-          const visible = entries
-            .filter((e) => e.isIntersecting)
-            .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0))[0];
-          if (visible?.target?.id) setActive(visible.target.id);
-        },
-        { rootMargin: "-20% 0px -65% 0px", threshold: [0.05, 0.12, 0.2, 0.35] }
-      );
-
-      sections.forEach((s) => ioActive.observe(s));
-
-      // Set initial active based on hash / default
-      const initial = location.hash?.slice(1);
-      if (initial && sectionById.has(initial)) setActive(initial);
-      else setActive("about");
     </script>
   </body>
 </html>
