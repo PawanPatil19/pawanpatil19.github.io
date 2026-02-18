@@ -1,749 +1,322 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pawan Patil — Software Engineer</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawan Patil</title>
+    <!-- Coding font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <!--
-    - favicon
-  -->
+    <style>
+      :root {
+        --bg: #0b0d10;
+        --panel: rgba(255, 255, 255, 0.04);
+        --text: rgba(255, 255, 255, 0.88);
+        --muted: rgba(255, 255, 255, 0.62);
+        --line: rgba(255, 255, 255, 0.12);
+        --accent: rgba(120, 180, 255, 0.9);
+      }
 
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background: radial-gradient(900px 500px at 15% 10%, rgba(120, 180, 255, 0.14), transparent 55%),
+                    radial-gradient(800px 500px at 85% 35%, rgba(160, 255, 210, 0.08), transparent 60%),
+                    var(--bg);
+        color: var(--text);
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        letter-spacing: -0.01em;
+        line-height: 1.55;
+      }
 
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
+      a { color: inherit; text-decoration: none; }
+      a:hover { color: var(--accent); }
 
-<body>
+      .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 72px 20px 40px;
+      }
 
-  <!--
-    - #MAIN
-  -->
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--line);
+      }
 
-  <main>
+      .name {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0;
+      }
 
-    <!--
-      - #SIDEBAR
-    -->
+      .tagline {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
 
-    <aside class="sidebar" data-sidebar>
+      nav {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        color: var(--muted);
+      }
 
-      <div class="sidebar-info">
+      .section {
+        margin-top: 34px;
+        padding: 18px 18px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        backdrop-filter: blur(10px);
+      }
 
-        <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Pawan Patil" width="80">
-        </figure>
+      .section h2 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.84);
+      }
 
-        <div class="info-content">
-          <h1 class="name" title="Pawan Patil">Pawan Patil</h1>
+      .mono-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 10px;
+        font-size: 12px;
+        color: var(--muted);
+        background: rgba(0, 0, 0, 0.18);
+      }
 
-          <p class="title">Software Engineer</p>
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 760px) {
+        header { flex-direction: column; align-items: flex-start; }
+        .grid { grid-template-columns: 1fr; }
+      }
+
+      .list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .item {
+        padding: 12px 12px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.12);
+      }
+
+      .item .top {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 6px;
+      }
+
+      .item .title {
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .item .meta {
+        color: var(--muted);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      /* Subtle "cursor" vibe */
+      .cursor::after {
+        content: "▍";
+        margin-left: 6px;
+        color: rgba(255, 255, 255, 0.45);
+        animation: blink 1.1s infinite;
+      }
+      @keyframes blink {
+        0%, 45% { opacity: 1; }
+        46%, 100% { opacity: 0; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <h1 class="name cursor">Pawan Patil</h1>
+          <p class="tagline">Software Engineer • Backend / Infrastructure • Building reliable systems</p>
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
+        <nav>
+          <a href="#about">/about</a>
+          <a href="#projects">/projects</a>
+          <a href="#experience">/experience</a>
+          <a href="#contact">/contact</a>
+        </nav>
+      </header>
 
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
+      <section id="about" class="section">
+        <h2>About</h2>
+        <div class="grid">
+          <div>
+            <p style="margin: 0; color: var(--muted); font-size: 13px;">
+              I build backend systems and data infrastructure with a focus on correctness, performance, and clean developer
+              experience. I enjoy shipping practical tools, tightening pipelines, and making systems easier to operate.
+            </p>
 
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
+            <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+              <span class="mono-pill">Python • FastAPI</span>
+              <span class="mono-pill">Kubernetes • Helm</span>
+              <span class="mono-pill">ClickHouse • Data Pipelines</span>
+              <span class="mono-pill">Distributed Systems</span>
             </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:rpawanpatil@u.nus.edu" class="contact-link">pawanpatil@u.nus.edu</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+12133522795" class="contact-link">+65 8670 8366</a>
-            </div>
-
-          </li>
-
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Singapore</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://github.com/PawanPatil19" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/pawan-kishor-patil/" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.instagram.com/unscenevision/" class="social-link">
-              <ion-icon name="camera-outline"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.instagram.com/_pawan.patil/" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.strava.com/athletes/132872812" class="social-link">
-              <ion-icon name="bicycle-outline"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.figma.com/@pawanpatil" class="social-link">
-              <ion-icon name="logo-figma"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-    </aside>
-
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            Hi !
-            I'm a senior at National University of Singapore studying Computer Science.
-          </p>
-          <p>
-            I like code and I'm obsessed with software development, especially when it comes 
-            to full stack applications, networking, and machine learning. 
-          </p>  
-          <p>
-            When I'm not buried in code, you'll find me daydreaming about the next big tech breakthrough.
-          </p>
-        </section>
-
-
-         <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Backend Development</h4>
-
-                <p class="service-item-text">
-                  Powering applications behind the scenes.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Frontend Development</h4>
-
-                <p class="service-item-text">
-                  Crafting sleek, interactive interfaces.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Data Engineering</h4>
-
-                <p class="service-item-text">
-                  Turning big data into insights.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Machine Learning</h4>
-
-                <p class="service-item-text">
-                  Noob but learning
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-        <!--
-          - strava
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">Strava</h3>
-          <div class="strava-embed">
-            <iframe height='454' width='400' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/132872812/latest-rides/18cefac8d562f6c1789a4f943c51e88ed622ba5e'></iframe>
-          </div>
-          
-        </section>
-
-
-
-       
-
-
-        <!--
-          - testimonials modal
-        -->
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-
-              <time datetime="2021-06-14">14 June, 2021</time>
-
-              <div data-modal-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
-        </div>
-
-      </article>
-
-
-
-<!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-          <a href = "https://drive.google.com/file/d/1QVT43qNPZ7ZQSSUPcdvFlPpQtTzaiB4n/view?usp=sharing" download>
-            <h5 class="h5 service-title">Download Resume</h4>
-          </a>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
           </div>
 
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">National University of Singapore</h4>
-
-              <span>Aug 2021 - May 2025 (Expected)</span>
-
-              <p class="timeline-text">
-                Bachelor of Computing in Computer Science
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Delhi Public School, Indonesia</h4>
-
-              <span>2008 - 2021</span>
-
-              <p class="timeline-text">
-                High School
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Software Engineer Intern @ Venti Technologies</h4>
-              <span>Jan 2024 - Present</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Undergraduate Research Intern @ NUS Smart Systems Institute</h4>
-              <span>May 2023 - Aug 2023</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Full Stack Developer Intern @ Recast Ventures</h4>
-              <span>May 2023 - Jul 2023</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Student Assistant @ NUS AI Lab</h4>
-              <span>May 2023 - Jul 2023</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Undergraduate Teaching Assistant @ NUS</h4>
-              <span>Jan 2023 - May 2023</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Software Development Lead @ NUS Fintech Society</h4>
-              <span>Jan 2023 - May 2023</span>
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-          <ul class="project-list">
-            <li><img src="./assets/images/icons8-c++-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-python-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-java-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-javascript-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-react-native-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-sql-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-flutter-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-docker-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-kubernetes-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-linux-50.png" alt="skills"></li>
-            <li><img src="./assets/images/icons8-git-50.png" alt="skills"></li>
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="portfolio" data-page="portfolio">
-
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-        </header>
-
-        <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
+          <div>
+            <ul class="list">
+              <li class="item">
+                <div class="top">
+                  <span class="title">Currently</span>
+                  <span class="meta">Singapore / India</span>
+                </div>
+                <p>Software engineering, infra + data platforms.</p>
               </li>
-
+              <li class="item">
+                <div class="top">
+                  <span class="title">Focus</span>
+                  <span class="meta">2026</span>
+                </div>
+                <p>Observability, scalable ingestion, reliable deployments.</p>
+              </li>
             </ul>
-
           </div>
+        </div>
+      </section>
 
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="https://github.com/PawanPatil19/lifehack">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project5.png" alt="finance" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Scammit</h3>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="https://drive.google.com/drive/my-drive">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project9.png" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">The Other Me AR</h3>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="https://github.com/shirsho-12/vorto_hacknroll">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/project7.png" alt="orizon" loading="lazy" width="100px" height="100px">
-                </figure>
-
-                <h3 class="project-title">Vorto</h3>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="https://github.com/PawanPatil19/Bartzee">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project2.png" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Bartzee</h3>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="https://github.com/PawanPatil19/pocketBook">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project1.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">PocketBook</h3>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="https://youtu.be/CqduBngFF9s">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project3.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">SIA App Challenge</h3>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="https://github.com/PawanPatil19/CS2103T-tp">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Pied Piper</h3>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="https://youtu.be/j7duhJKxuFo">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project4.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Clean-G</h3>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="https://github.com/PawanPatil19/HelpinU">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project8.png" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">HelpinU</h3>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.170851734038!2d103.78470733278807!3d1.299154938842781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1a56784202d9%3A0x488d08d6c1f88d6b!2sNational%20University%20of%20Singapore!5e0!3m2!1sen!2ssg!4v1719733967046!5m2!1sen!2ssg"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section>
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="#" class="form" data-form>
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+        <ul class="list">
+          <li class="item">
+            <div class="top">
+              <span class="title">Real-time Ingestion Worker</span>
+              <span class="meta">RabbitMQ → ClickHouse</span>
             </div>
+            <p>
+              Designed ingestion + rollups, schema migrations, and operational guardrails for high-volume metrics.
+            </p>
+          </li>
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+          <li class="item">
+            <div class="top">
+              <span class="title">Simulation Scenario Service</span>
+              <span class="meta">FastAPI</span>
+            </div>
+            <p>
+              Built APIs to manage simulation scenarios and testing workflows; focused on clean interfaces and correctness.
+            </p>
+          </li>
 
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
+          <li class="item">
+            <div class="top">
+              <span class="title">Infrastructure Tooling</span>
+              <span class="meta">K8s / Helm</span>
+            </div>
+            <p>
+              Deployment templates and automation to make services repeatable, observable, and safe to change.
+            </p>
+          </li>
+        </ul>
+      </section>
 
-          </form>
+      <section id="experience" class="section">
+        <h2>Experience</h2>
+        <ul class="list">
+          <li class="item">
+            <div class="top">
+              <span class="title">Software Engineer (Intern)</span>
+              <span class="meta">Autonomy / Data Platforms</span>
+            </div>
+            <p>
+              Worked on backend + data systems for autonomous vehicle operations (testing, ingestion, and platform reliability).
+            </p>
+          </li>
 
-        </section>
+          <li class="item">
+            <div class="top">
+              <span class="title">Student Assistant</span>
+              <span class="meta">AI & Robotics Lab</span>
+            </div>
+            <p>
+              Built and tested components for robotics applications; collaborated closely with research and engineering teams.
+            </p>
+          </li>
+        </ul>
+      </section>
 
-      </article>
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a class="mono-pill" href="mailto:you@example.com">email: you@example.com</a>
+          <a class="mono-pill" href="https://github.com/yourhandle" target="_blank" rel="noreferrer">github: /yourhandle</a>
+          <a class="mono-pill" href="https://www.linkedin.com/in/yourhandle" target="_blank" rel="noreferrer"
+            >linkedin: /yourhandle</a
+          >
+          <a class="mono-pill" href="/resume.pdf">resume.pdf</a>
+        </div>
+        <p style="margin: 12px 0 0; color: var(--muted); font-size: 12px;">
+          Tip: replace the placeholders (email/github/linkedin) and optionally link a real <code>resume.pdf</code>.
+        </p>
+      </section>
 
+      <footer>
+        <span>© <span id="year"></span> Pawan Patil</span>
+        <span style="color: rgba(255,255,255,0.45);">minimal • fast • readable</span>
+      </footer>
     </div>
 
-  </main>
-
-
-
-
-
-
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
-
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
