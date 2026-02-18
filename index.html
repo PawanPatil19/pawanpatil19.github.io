@@ -25,6 +25,11 @@
 
       * { box-sizing: border-box; }
       html, body { height: 100%; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         background: radial-gradient(900px 500px at 15% 10%, rgba(120, 180, 255, 0.14), transparent 55%),
@@ -46,13 +51,18 @@
         padding: 72px 20px 40px;
       }
 
+      /* ---------- Header / Nav (no wrap) ---------- */
       header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 16px;
+        gap: 18px;
         padding-bottom: 18px;
         border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        min-width: 220px;
       }
 
       .name {
@@ -69,12 +79,45 @@
 
       nav {
         display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: nowrap;              /* key: do not wrap */
+        white-space: nowrap;            /* key: keep items on one line */
+        overflow-x: auto;               /* key: if too small, allow horizontal scroll */
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;            /* space so scrollbar doesn't overlap */
+        scrollbar-width: none;          /* Firefox hide scrollbar */
+      }
+      nav::-webkit-scrollbar { display: none; } /* Chrome/Safari hide scrollbar */
+
+      .navlink {
         font-size: 13px;
         color: var(--muted);
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
+      }
+      .navlink:hover {
+        color: rgba(255,255,255,0.92);
+        border-color: var(--line);
+        background: rgba(0,0,0,0.16);
+        transform: translateY(-1px);
+      }
+      .navlink.active {
+        color: rgba(255,255,255,0.92);
+        border-color: var(--line);
+        background: rgba(0,0,0,0.22);
       }
 
+      /* Stack on small screens but still one-line nav */
+      @media (max-width: 760px) {
+        header { flex-direction: column; align-items: flex-start; }
+        .brand { min-width: 0; }
+        nav { width: 100%; }
+      }
+
+      /* ---------- Sections / Cards ---------- */
       .section {
         margin-top: 34px;
         padding: 18px 18px;
@@ -82,6 +125,15 @@
         border: 1px solid var(--line);
         border-radius: 14px;
         backdrop-filter: blur(10px);
+
+        /* reveal animation baseline */
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 500ms ease, transform 500ms ease;
+      }
+      .section.in {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .section h2 {
@@ -101,6 +153,12 @@
         font-size: 12px;
         color: var(--muted);
         background: rgba(0, 0, 0, 0.18);
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+      .mono-pill:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255,255,255,0.18);
+        background: rgba(0,0,0,0.24);
       }
 
       .grid {
@@ -108,9 +166,7 @@
         grid-template-columns: 1.2fr 1fr;
         gap: 14px;
       }
-
       @media (max-width: 760px) {
-        header { flex-direction: column; align-items: flex-start; }
         .grid { grid-template-columns: 1fr; }
       }
 
@@ -127,6 +183,12 @@
         border: 1px solid var(--line);
         border-radius: 12px;
         background: rgba(0, 0, 0, 0.12);
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+      .item:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255,255,255,0.18);
+        background: rgba(0,0,0,0.18);
       }
 
       .item .top {
@@ -166,7 +228,7 @@
         border-top: 1px solid var(--line);
       }
 
-      /* Subtle "cursor" vibe */
+      /* ---------- subtle “cursor” vibe + intro animation ---------- */
       .cursor::after {
         content: "▍";
         margin-left: 6px;
@@ -177,22 +239,40 @@
         0%, 45% { opacity: 1; }
         46%, 100% { opacity: 0; }
       }
+
+      .fade-in {
+        animation: fadeInUp 650ms ease both;
+      }
+      .fade-in.delay-1 { animation-delay: 80ms; }
+      .fade-in.delay-2 { animation-delay: 160ms; }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .fade-in { animation: none; }
+        .section { opacity: 1; transform: none; transition: none; }
+        .item, .mono-pill, .navlink { transition: none; }
+      }
     </style>
   </head>
 
   <body>
     <div class="wrap">
       <header>
-        <div>
-          <h1 class="name cursor">Pawan Patil</h1>
-          <p class="tagline">Software Engineer • Backend / Infrastructure • Building reliable systems</p>
+        <div class="brand">
+          <h1 class="name cursor fade-in">Pawan Patil</h1>
+          <p class="tagline fade-in delay-1">Software Engineer • Backend / Infrastructure • Building reliable systems</p>
         </div>
 
-        <nav>
-          <a href="#about">/about</a>
-          <a href="#projects">/projects</a>
-          <a href="#experience">/experience</a>
-          <a href="#contact">/contact</a>
+        <nav aria-label="Primary">
+          <a class="navlink" href="#about">/about</a>
+          <a class="navlink" href="#projects">/projects</a>
+          <a class="navlink" href="#experience">/experience</a>
+          <a class="navlink" href="#contact">/contact</a>
         </nav>
       </header>
 
@@ -242,9 +322,7 @@
               <span class="title">Real-time Ingestion Worker</span>
               <span class="meta">RabbitMQ → ClickHouse</span>
             </div>
-            <p>
-              Designed ingestion + rollups, schema migrations, and operational guardrails for high-volume metrics.
-            </p>
+            <p>Designed ingestion + rollups, schema migrations, and operational guardrails for high-volume metrics.</p>
           </li>
 
           <li class="item">
@@ -252,9 +330,7 @@
               <span class="title">Simulation Scenario Service</span>
               <span class="meta">FastAPI</span>
             </div>
-            <p>
-              Built APIs to manage simulation scenarios and testing workflows; focused on clean interfaces and correctness.
-            </p>
+            <p>Built APIs to manage simulation scenarios and testing workflows; focused on clean interfaces and correctness.</p>
           </li>
 
           <li class="item">
@@ -262,9 +338,7 @@
               <span class="title">Infrastructure Tooling</span>
               <span class="meta">K8s / Helm</span>
             </div>
-            <p>
-              Deployment templates and automation to make services repeatable, observable, and safe to change.
-            </p>
+            <p>Deployment templates and automation to make services repeatable, observable, and safe to change.</p>
           </li>
         </ul>
       </section>
@@ -277,9 +351,7 @@
               <span class="title">Software Engineer (Intern)</span>
               <span class="meta">Autonomy / Data Platforms</span>
             </div>
-            <p>
-              Worked on backend + data systems for autonomous vehicle operations (testing, ingestion, and platform reliability).
-            </p>
+            <p>Worked on backend + data systems for autonomous vehicle operations (testing, ingestion, and platform reliability).</p>
           </li>
 
           <li class="item">
@@ -287,9 +359,7 @@
               <span class="title">Student Assistant</span>
               <span class="meta">AI & Robotics Lab</span>
             </div>
-            <p>
-              Built and tested components for robotics applications; collaborated closely with research and engineering teams.
-            </p>
+            <p>Built and tested components for robotics applications; collaborated closely with research and engineering teams.</p>
           </li>
         </ul>
       </section>
@@ -305,18 +375,57 @@
           <a class="mono-pill" href="/resume.pdf">resume.pdf</a>
         </div>
         <p style="margin: 12px 0 0; color: var(--muted); font-size: 12px;">
-          Tip: replace the placeholders (email/github/linkedin) and optionally link a real <code>resume.pdf</code>.
+          Replace placeholders (email/github/linkedin) and optionally link a real <code>resume.pdf</code>.
         </p>
       </section>
 
-      <footer>
+      <footer class="fade-in delay-2">
         <span>© <span id="year"></span> Pawan Patil</span>
         <span style="color: rgba(255,255,255,0.45);">minimal • fast • readable</span>
       </footer>
     </div>
 
     <script>
+      // Year
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Reveal-on-scroll (IntersectionObserver)
+      const sections = document.querySelectorAll(".section");
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) e.target.classList.add("in");
+          }
+        },
+        { threshold: 0.12 }
+      );
+      sections.forEach((s) => io.observe(s));
+
+      // Active nav link while scrolling
+      const navLinks = Array.from(document.querySelectorAll(".navlink"));
+      const sectionById = new Map(Array.from(sections).map((s) => [s.id, s]));
+
+      const setActive = (id) => {
+        navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
+      };
+
+      const ioActive = new IntersectionObserver(
+        (entries) => {
+          // pick the most visible intersecting section
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0))[0];
+          if (visible?.target?.id) setActive(visible.target.id);
+        },
+        { rootMargin: "-20% 0px -65% 0px", threshold: [0.05, 0.12, 0.2, 0.35] }
+      );
+
+      sections.forEach((s) => ioActive.observe(s));
+
+      // Set initial active based on hash / default
+      const initial = location.hash?.slice(1);
+      if (initial && sectionById.has(initial)) setActive(initial);
+      else setActive("about");
     </script>
   </body>
 </html>
